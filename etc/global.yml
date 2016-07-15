@@ -1,0 +1,8 @@
+---
+:interface: br0
+:run_as: nobody
+:dash_vendors:
+- '747548'
+- '74c246'
+- '84d6d0'
+- '44650d'
