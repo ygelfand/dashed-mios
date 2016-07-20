@@ -1,7 +1,7 @@
 module DashedMios
   class ButtonPress
     attr_accessor :arp, :https, :button_history
-    def initialize(arp =  true, https =  false)
+    def initialize(arp:  true, https:  false)
       @arp = arp
       @https = https
       @button_history = {}
@@ -23,6 +23,8 @@ module DashedMios
           button_history[packet.src_mac_address] ||= {}
           if (button_history[packet.src_mac_address][:last]||0) + 5 < packet.raw_packet.time.to_f
             button_history[packet.src_mac_address][:last] = packet.raw_packet.time.to_f
+            MIOS.run(CONFIG.settings[:buttons][packet.src_mac_address][:action]) if CONFIG.settings[:buttons][packet.src_mac_address]
+           
             puts "Possible Button detected on #{packet.src_mac_address} via #{match_method(packet)}"
           end
         end

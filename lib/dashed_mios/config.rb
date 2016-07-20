@@ -5,7 +5,6 @@ module DashedMios
     def initialize
       setup(:global)
     end
-    private
     def setup(attribute, filename=nil)
       filename ||= "#{attribute}.yml"
       path = File.join(BASE_PATH, filename)

@@ -4,4 +4,4 @@ require 'bundler/setup'
 require 'pcap'
 require 'awesome_print'
 require_relative '../lib/dashed_mios.rb'
-DashedMios::ButtonPress.new(true,true).watch!
+DashedMios::ButtonPress.new(arp: false, https: true).watch!
